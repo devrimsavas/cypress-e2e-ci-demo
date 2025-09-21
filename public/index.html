@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>TEST</h1>
+    <form id="personform">
+        <input type="text" id="nameinput" name="nameinput">
+        <input type="password" id="passinput" name="passinput">
+        <button type="submit" id="submitformbutton">SUBMIT </button>
+
+    </form>
+    <p id="message"></p>
+
+    <script>
+
+        let form = document.getElementById("personform");
+        const messageEl = document.getElementById("message");
+
+
+        form.addEventListener("submit", async (e) => {
+
+            e.preventDefault();
+            console.log("intercepted");
+
+            let name = document.getElementById("nameinput").value;
+            let password = document.getElementById("passinput").value;
+            let person = {
+                name: name,
+                password: password
+            }
+
+            const response = await fetch("http://localhost:3000/", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(person)
+            })
+            if (!response.ok) {
+                console.error("fetch error")
+                messageEl.textContent = "Wrong";
+                messageEl.style.color = "red";
+                return
+            }
+            const data = await response.json();
+            console.log(data);
+            messageEl.textContent = "OKAY BOSS";
+            messageEl.style.color = "green";
+            window.location.href="http://localhost:3000/adminpage";
+           
+
+
+        })
+
+    </script>
+</body>
+
+</html>

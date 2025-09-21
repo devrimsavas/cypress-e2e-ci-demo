@@ -1,0 +1,19 @@
+{
+  "name": "test1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "cy:open": "cypress open"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/cypress": "^1.1.6",
+    "body-parser": "^2.2.0",
+    "express": "^5.1.0",
+    "file": "^0.2.2",
+    "path": "^0.12.7"
+  }
+}
