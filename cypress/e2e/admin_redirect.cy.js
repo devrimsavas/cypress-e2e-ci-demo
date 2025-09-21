@@ -13,5 +13,5 @@ describe("Admin Redirect", () => {
     cy.contains("h1", "Admin Page").should("be.visible");
   });
 
-  it("")
+  
 });
