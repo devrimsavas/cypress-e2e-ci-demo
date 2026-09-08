@@ -63,3 +63,5 @@ Every push and pull request to `main` triggers the GitHub Actions workflow, whic
 ## 📝 Notes
 
 This is a learning project focused specifically on getting E2E testing working end-to-end in CI — not just writing Cypress tests locally, but making sure they run reliably against a freshly started server in an automated pipeline. It complements other testing practice (Jest + Supertest for API-level tests in [SnapShop](https://github.com/devrimsavas/ecommerce-platform)) with browser-level, user-flow testing.
+
+**A real bug caught by CI:** the login page originally redirected to the admin page immediately after showing a success message, creating a race condition — in CI, the page sometimes navigated away before Cypress could assert on the message text. Fixed by adding a short delay before the redirect, giving both the user and the test a moment to see the confirmation.
